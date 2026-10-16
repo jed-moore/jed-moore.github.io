@@ -54,8 +54,13 @@
   .row-link .sub{color:var(--text-muted);font-family:'Courier New',monospace;font-size:.95rem;margin-top:6px;}
   .arrow{font-size:1.4rem;}
 
-  .contact-links{display:flex;flex-direction:column;gap:14px;margin-top:30px;font-size:1.2rem;}
-  .contact-links a{color:var(--accent);font-weight:600;}
+  /* contact */
+  .contact-block{margin-top:60px;display:flex;flex-direction:column;gap:48px;}
+  .contact-item .eyebrow{margin-bottom:14px;}
+  .contact-email{font-size:2rem;font-weight:800;letter-spacing:-.5px;color:var(--text-dark);transition:opacity .2s;}
+  .contact-email:hover{opacity:.6;}
+  .contact-icon{display:inline-flex;color:var(--text-dark);transition:opacity .2s;}
+  .contact-icon:hover{opacity:.6;}
 
   footer{background:var(--bg-dark);color:#888;text-align:center;padding:40px;font-size:.9rem;}
 
@@ -63,9 +68,9 @@
     nav{padding:16px 24px;}.nav-links{gap:20px;}
     .hero{flex-direction:column;justify-content:center;padding:120px 24px 60px;}
     .hero-text h1{font-size:3rem;}
-    .hero-globe{width:280px;height:280px;}
     .hero-photo{width:100%;max-width:320px;height:auto;}
     .section-title{font-size:2.2rem;}
+    .contact-email{font-size:1.5rem;}
   }
 </style>
 </head>
@@ -89,9 +94,7 @@
     </div>
   </div>
 
-  <!-- static earth image (swap for your own file later, e.g. src="earth.jpg") -->
-  <img class="hero-globe" src="https://placehold.co/460x460/0a1a2e/2a6e9e?text=Earth" alt="Earth">
-
+  <!-- photo (swap src for your own file later, e.g. src="headshot.jpg") -->
   <img class="hero-photo" src="https://placehold.co/360x420/222/fff?text=Your+Photo" alt="Jed Moore">
 
   <a href="#about" class="scroll-arrow">&#8595;</a>
@@ -143,14 +146,14 @@
 
   <div class="contact-block">
     <div class="contact-item">
-      <div class="contact-label">EMAIL</div>
+      <div class="eyebrow">EMAIL</div>
       <a class="contact-email" href="mailto:jedemoore@gmail.com">jedemoore@gmail.com</a>
     </div>
 
     <div class="contact-item">
-      <div class="contact-label">LINKEDIN</div>
+      <div class="eyebrow">LINKEDIN</div>
       <a class="contact-icon" href="https://www.linkedin.com/in/jedemoore" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" width="44" height="44" fill="currentColor" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor" aria-hidden="true">
           <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
         </svg>
       </a>
