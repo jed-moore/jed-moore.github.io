@@ -3,113 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jed Moore — Portfolio</title>
+<title>Jed Moore — Geospatial & Imagery Analyst</title>
 <style>
   :root{
-    --bg-dark:#070707;
-    --bg-light:#f7f7f7;
-    --text-dark:#0a0a0a;
-    --text-muted:#8a8a8a;
-    --accent:#1a73ff;
+    --bg:#05080f;
+    --panel:#0a111e;
+    --line:#17293f;
+    --text:#e6edf5;
+    --muted:#7d93aa;
+    --accent:#2fd4ff;
+    --accent-dim:#1a8fb8;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
-    background:var(--bg-light);
-    color:var(--text-dark);
+    background:var(--bg);color:var(--text);
+    position:relative;overflow-x:hidden;
   }
   a{text-decoration:none;color:inherit;}
+  .mono{font-family:'SFMono-Regular','Consolas','Courier New',monospace;}
+
+  /* faint grid overlay across whole page */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(var(--line) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:60px 60px;opacity:.15;
+  }
 
   /* ---------- NAVBAR ---------- */
   nav{
-    position:fixed;top:0;left:0;width:100%;
+    position:fixed;top:0;left:0;width:100%;z-index:100;
     display:flex;align-items:center;justify-content:space-between;
-    padding:18px 48px;background:var(--bg-dark);color:#fff;z-index:100;
+    padding:16px 40px;background:rgba(5,8,15,.82);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
   }
-  .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:1.1rem;}
-  .brand .dot{width:22px;height:22px;border-radius:50%;background:var(--accent);}
-  .nav-links{display:flex;gap:34px;font-weight:600;}
-  .nav-links a{transition:opacity .2s;}
-  .nav-links a:hover{opacity:.6;}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:1.05rem;letter-spacing:.5px;}
+  .brand .dot{
+    width:12px;height:12px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 14px var(--accent);
+  }
+  .nav-links{display:flex;gap:30px;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;}
+  .nav-links a{color:var(--muted);transition:color .2s;}
+  .nav-links a:hover{color:var(--accent);}
 
   /* ---------- HERO ---------- */
   .hero{
-    min-height:100vh;background:var(--bg-dark);color:#fff;
+    min-height:100vh;position:relative;z-index:1;
     display:flex;align-items:center;justify-content:space-between;
-    padding:0 60px;position:relative;overflow:hidden;gap:40px;
+    padding:0 60px;gap:40px;overflow:hidden;
   }
-  .hero-left{flex:1;position:relative;z-index:2;min-height:100vh;}
-  .hero-text{
-    position:absolute;top:50%;left:0;transform:translateY(-50%);
-    z-index:3;max-width:520px;pointer-events:none;
+  /* starfield */
+  .hero::after{
+    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(1px 1px at 20% 30%, #fff, transparent),
+      radial-gradient(1px 1px at 70% 60%, #cfe8ff, transparent),
+      radial-gradient(1px 1px at 40% 80%, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 85% 25%, #fff, transparent),
+      radial-gradient(1px 1px at 55% 15%, #9fd8ff, transparent),
+      radial-gradient(1px 1px at 10% 70%, #fff, transparent),
+      radial-gradient(1px 1px at 90% 85%, #fff, transparent);
+    opacity:.6;
   }
-  .hero-text h1{font-size:4.2rem;font-weight:800;letter-spacing:-1px;}
-  .hero-text p{font-size:1.5rem;margin-top:8px;font-family:'Courier New',monospace;color:#e8e8e8;}
+  .hero-left{flex:1;position:relative;z-index:3;min-height:100vh;}
+  .hero-text{position:absolute;top:50%;left:0;transform:translateY(-50%);max-width:560px;pointer-events:none;}
+  .hero-tag{
+    color:var(--accent);font-size:.78rem;letter-spacing:3px;margin-bottom:18px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .hero-tag::before{content:"";width:34px;height:1px;background:var(--accent);display:inline-block;}
+  .hero-text h1{font-size:4.4rem;font-weight:800;letter-spacing:-1.5px;line-height:1;}
+  .hero-text h1 .accent{color:var(--accent);}
+  .hero-text .sub{font-size:1.15rem;margin-top:18px;color:var(--muted);letter-spacing:1px;}
+  .readout{margin-top:28px;font-size:.75rem;color:var(--accent-dim);letter-spacing:1px;}
 
-  /* Spline rotating globe */
-  .earth-wrap{
-    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-    z-index:1;width:680px;height:680px;
-  }
-  .earth-wrap iframe{
-    width:100%;height:100%;border:none;background:transparent;
-  }
+  /* Spline globe */
+  .earth-wrap{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1;width:700px;height:700px;}
+  .earth-wrap iframe{width:100%;height:100%;border:none;background:transparent;}
 
-  .hero-photo{
-    width:380px;height:420px;border-radius:14px;object-fit:cover;z-index:2;
-    box-shadow:0 20px 60px rgba(0,0,0,.5);
+  /* photo as "imagery tile" */
+  .hero-photo-tile{position:relative;z-index:3;}
+  .hero-photo-tile img{width:360px;height:420px;object-fit:cover;display:block;}
+  .hero-photo-tile .frame{position:relative;padding:10px;border:1px solid var(--line);background:rgba(10,17,30,.6);}
+  .hero-photo-tile .frame::before,
+  .hero-photo-tile .frame::after{
+    content:"";position:absolute;width:14px;height:14px;border:2px solid var(--accent);
   }
+  .hero-photo-tile .frame::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+  .hero-photo-tile .frame::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+  .tile-meta{display:flex;justify-content:space-between;font-size:.68rem;color:var(--muted);letter-spacing:1px;margin-top:8px;}
 
-  .scroll-arrow{
-    position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
-    font-size:1.6rem;color:#fff;z-index:3;animation:bob 1.8s ease-in-out infinite;
-  }
-  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,8px);}}
+  .scroll-arrow{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:4;
+    font-size:.72rem;letter-spacing:2px;color:var(--muted);text-align:center;animation:bob 2s ease-in-out infinite;}
+  .scroll-arrow span{display:block;font-size:1.3rem;color:var(--accent);margin-top:4px;}
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
 
   /* ---------- SECTIONS ---------- */
-  section{max-width:1100px;margin:0 auto;padding:120px 40px;}
-  .eyebrow{color:var(--accent);font-weight:700;letter-spacing:2px;font-size:.85rem;margin-bottom:28px;}
-  .section-title{font-size:3rem;font-weight:800;letter-spacing:-1px;line-height:1.1;}
-  .section-body{font-size:1.3rem;color:var(--text-muted);line-height:1.7;margin-top:28px;max-width:720px;}
+  section{max-width:1100px;margin:0 auto;padding:120px 40px;position:relative;z-index:1;}
+  .label{color:var(--accent);font-size:.78rem;letter-spacing:3px;margin-bottom:26px;}
+  .section-title{font-size:2.8rem;font-weight:800;letter-spacing:-1px;line-height:1.1;}
+  .section-title .accent{color:var(--accent);}
+  .section-body{font-size:1.2rem;color:var(--muted);line-height:1.75;margin-top:26px;max-width:720px;}
 
-  /* clickable row (like "More About Me") */
-  .row-link{
-    display:flex;justify-content:space-between;align-items:flex-start;
-    border-bottom:1px solid #111;padding:22px 0;margin-top:60px;
-    transition:opacity .2s;
-  }
-  .row-link:hover{opacity:.55;}
-  .row-link h3{font-size:1.7rem;font-weight:800;}
-  .row-link .sub{color:var(--text-muted);font-family:'Courier New',monospace;font-size:.95rem;margin-top:6px;}
-  .arrow{font-size:1.4rem;}
+  /* clickable rows */
+  .row-link{display:flex;justify-content:space-between;align-items:center;
+    border:1px solid var(--line);background:var(--panel);
+    padding:24px 26px;margin-top:18px;transition:border-color .2s,background .2s,transform .2s;}
+  .row-link:first-of-type{margin-top:50px;}
+  .row-link:hover{border-color:var(--accent);background:#0d1725;transform:translateX(6px);}
+  .row-link h3{font-size:1.5rem;font-weight:700;}
+  .row-link .sub{color:var(--muted);font-size:.78rem;letter-spacing:1.5px;margin-top:6px;text-transform:uppercase;}
+  .arrow{font-size:1.3rem;color:var(--accent);}
 
   /* contact */
-  .contact-links{display:flex;flex-direction:column;gap:14px;margin-top:30px;font-size:1.2rem;}
-  .contact-links a{color:var(--accent);font-weight:600;}
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:40px;}
+  .contact-card{border:1px solid var(--line);background:var(--panel);padding:22px;transition:border-color .2s;}
+  .contact-card:hover{border-color:var(--accent);}
+  .contact-card .k{font-size:.7rem;letter-spacing:2px;color:var(--muted);}
+  .contact-card .v{font-size:1.05rem;color:var(--accent);margin-top:8px;word-break:break-all;}
 
-  footer{background:var(--bg-dark);color:#888;text-align:center;padding:40px;font-size:.9rem;}
+  footer{border-top:1px solid var(--line);color:var(--muted);text-align:center;
+    padding:34px;font-size:.75rem;letter-spacing:1.5px;position:relative;z-index:1;}
 
   @media(max-width:900px){
-    nav{padding:16px 24px;}
-    .nav-links{gap:20px;}
-    .hero{flex-direction:column;justify-content:center;padding:120px 24px 60px;}
+    nav{padding:14px 20px;}.nav-links{gap:16px;font-size:.7rem;}
+    .hero{flex-direction:column;justify-content:center;padding:120px 24px 70px;}
     .hero-text{position:static;transform:none;max-width:100%;}
     .hero-left{min-height:auto;}
     .hero-text h1{font-size:3rem;}
-    .earth-wrap{position:relative;left:auto;top:auto;transform:none;margin:40px auto;width:360px;height:360px;}
-    .hero-photo{width:100%;max-width:340px;height:auto;}
-    .section-title{font-size:2.2rem;}
+    .earth-wrap{position:relative;left:auto;top:auto;transform:none;margin:30px auto;width:340px;height:340px;}
+    .hero-photo-tile img{width:100%;max-width:320px;height:auto;}
+    .section-title{font-size:2rem;}
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="brand"><span class="dot"></span>Jed Moore</a>
+  <a href="index.html" class="brand"><span class="dot"></span>JED MOORE</a>
   <div class="nav-links">
     <a href="#about">About</a>
-    <a href="#works">Works</a>
+    <a href="#works">Imagery</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -118,8 +155,10 @@
 <header class="hero">
   <div class="hero-left">
     <div class="hero-text">
-      <h1>Hi! I'm Jed</h1>
-      <p>Welcome to my Portfolio</p>
+      <div class="hero-tag mono">GEOSPATIAL · IMAGERY · REMOTE SENSING</div>
+      <h1>Hi, I'm <span class="accent">Jed</span></h1>
+      <div class="sub mono">Imagery &amp; Geospatial Analyst</div>
+      <div class="readout mono">// LAT 30.6280° N &nbsp; LON 96.3344° W &nbsp; STATUS: ONLINE</div>
     </div>
   </div>
 
@@ -127,74 +166,23 @@
     <iframe src="https://my.spline.design/moon-TtfwWNPgYDGw7g4GJeLlyysV/" frameborder="0" title="Rotating globe"></iframe>
   </div>
 
-  <img class="hero-photo" src="https://placehold.co/380x420/222/fff?text=Your+Photo" alt="Jed Moore">
+  <div class="hero-photo-tile">
+    <div class="frame">
+      <img src="https://placehold.co/360x420/0a111e/2fd4ff?text=Your+Photo" alt="Jed Moore">
+    </div>
+    <div class="tile-meta mono"><span>SUBJECT: J. MOORE</span><span>CAPTURE 2026</span></div>
+  </div>
 
-  <a href="#about" class="scroll-arrow">&#8595;</a>
+  <a href="#about" class="scroll-arrow mono">SCROLL<span>&#8595;</span></a>
 </header>
 
 <!-- ===== ABOUT ===== -->
 <section id="about">
-  <div class="eyebrow">ABOUT</div>
-  <h2 class="section-title">Geospatial Technology &middot; GIS &middot; Remote Sensing</h2>
+  <div class="label mono">// 01 — ABOUT</div>
+  <h2 class="section-title">Geospatial Technology <span class="accent">·</span> GIS <span class="accent">·</span> Remote Sensing</h2>
   <p class="section-body">
     I'm Jed Moore, and I'm currently studying Geographic Information Science
     &amp; Technology at Texas A&amp;M University. Through school and internships, I've
     developed experience working with spatial databases, remote sensing, GIS
     automation, and web mapping. I'm particularly interested in applying geospatial
-    technology to complex problems in engineering, intelligence, and national security.
-  </p>
-
-  <a href="about.html" class="row-link">
-    <div>
-      <h3>More About Me</h3>
-      <div class="sub">Outside of work and class!</div>
-    </div>
-    <span class="arrow">&#8599;</span>
-  </a>
-</section>
-
-<!-- ===== WORKS ===== -->
-<section id="works">
-  <div class="eyebrow">WORKS</div>
-  <h2 class="section-title">Projects built to be intuitive</h2>
-  <p class="section-body">A small selection of school, work, and personal projects.</p>
-
-  <a href="projects.html" class="row-link">
-    <div>
-      <h3>Class Projects</h3>
-      <div class="sub">Layouts &middot; StoryMaps</div>
-    </div>
-    <span class="arrow">&#8599;</span>
-  </a>
-  <a href="projects.html" class="row-link">
-    <div>
-      <h3>Work Experience</h3>
-      <div class="sub">Dashboards &middot; Basemaps</div>
-    </div>
-    <span class="arrow">&#8599;</span>
-  </a>
-  <a href="projects.html" class="row-link">
-    <div>
-      <h3>Personal Works</h3>
-      <div class="sub">Reports &middot; Visualizations</div>
-    </div>
-    <span class="arrow">&#8599;</span>
-  </a>
-</section>
-
-<!-- ===== CONTACT ===== -->
-<section id="contact">
-  <div class="eyebrow">CONTACT</div>
-  <h2 class="section-title">Let's connect</h2>
-  <p class="section-body">[ADD a short line here — e.g. "Reach out about internships, projects, or GIS work."]</p>
-  <div class="contact-links">
-    <a href="mailto:[ADD email]">[ADD email]</a>
-    <a href="[ADD LinkedIn URL]">LinkedIn</a>
-    <a href="[ADD GitHub URL]">GitHub</a>
-  </div>
-</section>
-
-<footer>&copy; 2026 Jed Moore &middot; Built with HTML</footer>
-
-</body>
-</html>
+    technology to complex problems in engineering
