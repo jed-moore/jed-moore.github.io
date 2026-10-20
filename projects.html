@@ -43,7 +43,7 @@
 
   /* ---------- STORYMAPS ---------- */
   .storymap{display:block;margin-bottom:90px;transition:transform .3s ease;}
-  .storymap:hover{transform:scale(1.03);}         /* expand on hover */
+  .storymap:hover{transform:scale(1.03);}
   .storymap-img{width:100%;height:230px;object-fit:cover;border-radius:6px;display:block;}
   .storymap-body{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;margin-top:26px;}
   .storymap-body h3{font-size:1.9rem;font-weight:800;}
@@ -52,20 +52,28 @@
   .storymap-caption{color:var(--text-muted);font-size:1rem;margin-top:20px;padding-bottom:18px;border-bottom:1px solid #ccc;}
 
   /* ---------- LAYOUT GALLERY ---------- */
-  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px;align-items:start;}
-  .gallery img{width:100%;display:block;border-radius:8px;border:1px solid #e2e2e2;background:#fff;
+  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:28px;align-items:start;}
+  .gallery img{width:100%;display:block;border-radius:8px;border:1px solid #e2e2e2;background:#fff;cursor:zoom-in;
     transition:transform .3s ease, box-shadow .3s ease;}
-  .gallery img:hover{transform:scale(1.04);box-shadow:0 14px 40px rgba(0,0,0,.15);}  /* expand on hover */
+  .gallery img:hover{transform:scale(1.04);box-shadow:0 14px 40px rgba(0,0,0,.15);}
 
   /* ---------- LAB REPORTS ---------- */
   .report{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;
     padding:30px 0 24px;border-bottom:1px solid #ccc;margin-bottom:50px;
     transition:transform .3s ease;}
-  .report:hover{transform:scale(1.02);}            /* expand on hover */
+  .report:hover{transform:scale(1.02);}
   .report h3{font-size:2rem;font-weight:800;max-width:720px;}
   .report .desc{color:var(--text-muted);font-size:1.1rem;line-height:1.6;margin-top:14px;max-width:640px;}
   .report .course{color:var(--text-muted);font-size:1rem;margin-top:18px;}
   .report .arrow{font-size:1.4rem;flex:0 0 auto;margin-top:6px;}
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.9);
+    align-items:center;justify-content:center;padding:40px;cursor:zoom-out;}
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:92%;max-height:92%;object-fit:contain;border-radius:6px;
+    box-shadow:0 20px 70px rgba(0,0,0,.6);}
+  .lightbox .close{position:absolute;top:24px;right:34px;font-size:2.4rem;color:#fff;cursor:pointer;line-height:1;}
 
   footer{background:var(--bg-dark);color:#888;text-align:center;padding:40px;font-size:.9rem;}
 
@@ -74,6 +82,7 @@
     .hero-content h1{font-size:3rem;}
     .hero-moon{width:180px;height:180px;top:5%;right:6%;}
     .block-title{font-size:2.3rem;}
+    .gallery{grid-template-columns:1fr;}
     .storymap-body{flex-direction:column;}
     .report{flex-direction:column;}
   }
@@ -187,6 +196,35 @@
   </a>
 </section>
 
+<!-- lightbox overlay -->
+<div class="lightbox" id="lightbox">
+  <span class="close" id="lightbox-close">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <footer>&copy; 2026 Jed Moore &middot; Built with HTML</footer>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  // open when any gallery image is clicked
+  document.querySelectorAll('.gallery img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('open');
+    });
+  });
+
+  // close on background click, the × button, or the Esc key
+  function closeLightbox(){ lightbox.classList.remove('open'); }
+  lightbox.addEventListener('click', e => {
+    if (e.target !== lightboxImg) closeLightbox();
+  });
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
 </body>
 </html>
