@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jed Moore — Class Projects</title>
+<style>
+  :root{
+    --bg-dark:#070707;
+    --bg-easy-black:#121212;
+    --bg-light:#f7f7f7;
+    --text-dark:#0a0a0a;
+    --text-muted:#8a8a8a;
+    --accent:#1a73ff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg-light);color:var(--text-dark);}
+  a{text-decoration:none;color:inherit;}
+
+  /* ---------- NAVBAR ---------- */
+  nav{position:fixed;top:0;left:0;width:100%;display:flex;align-items:center;justify-content:space-between;
+    padding:28px 48px;background:var(--bg-easy-black);color:#fff;z-index:100;}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:1.1rem;}
+  .brand .dot{width:22px;height:22px;border-radius:50%;background:var(--accent);}
+  .nav-links{display:flex;gap:34px;font-weight:600;}
+  .nav-links a{transition:opacity .2s;}
+  .nav-links a:hover{opacity:.6;}
+
+  /* ---------- HERO ---------- */
+  .hero{min-height:80vh;background:var(--bg-dark);color:#fff;position:relative;overflow:hidden;display:flex;align-items:center;}
+  .hero-moon{position:absolute;top:8%;right:14%;width:320px;height:320px;border-radius:50%;object-fit:cover;z-index:1;
+    box-shadow:0 0 70px 10px rgba(120,120,140,.25);}
+  .hero-content{position:relative;z-index:2;max-width:760px;padding:0 9%;}
+  .hero-content h1{font-size:4.6rem;font-weight:800;letter-spacing:-2px;}
+  .hero-content p{font-size:1.35rem;color:#cfcfcf;line-height:1.6;margin-top:24px;max-width:620px;}
+  .hero-content .divider{border:none;border-top:1px solid #3a3a3a;margin:28px 0;max-width:620px;}
+  .hero-content .closer{font-size:1.35rem;color:#fff;}
+
+  /* ---------- GENERIC SECTION ---------- */
+  .block{max-width:1100px;margin:0 auto;padding:110px 40px;}
+  .block-title{font-size:3.2rem;font-weight:800;letter-spacing:-1px;margin-bottom:50px;}
+
+  /* ---------- STORYMAPS ---------- */
+  .storymap{display:block;margin-bottom:90px;transition:transform .3s ease;}
+  .storymap:hover{transform:scale(1.03);}         /* expand on hover */
+  .storymap-img{width:100%;height:230px;object-fit:cover;border-radius:6px;display:block;}
+  .storymap-body{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;margin-top:26px;}
+  .storymap-body h3{font-size:1.9rem;font-weight:800;}
+  .storymap-body .desc{color:var(--text-muted);font-size:1.1rem;line-height:1.6;margin-top:14px;max-width:640px;}
+  .storymap-body .arrow{font-size:1.4rem;flex:0 0 auto;margin-top:6px;}
+  .storymap-caption{color:var(--text-muted);font-size:1rem;margin-top:20px;padding-bottom:18px;border-bottom:1px solid #ccc;}
+
+  /* ---------- LAYOUT GALLERY ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px;align-items:start;}
+  .gallery img{width:100%;display:block;border-radius:8px;border:1px solid #e2e2e2;background:#fff;
+    transition:transform .3s ease, box-shadow .3s ease;}
+  .gallery img:hover{transform:scale(1.04);box-shadow:0 14px 40px rgba(0,0,0,.15);}  /* expand on hover */
+
+  /* ---------- LAB REPORTS ---------- */
+  .report{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;
+    padding:30px 0 24px;border-bottom:1px solid #ccc;margin-bottom:50px;
+    transition:transform .3s ease;}
+  .report:hover{transform:scale(1.02);}            /* expand on hover */
+  .report h3{font-size:2rem;font-weight:800;max-width:720px;}
+  .report .desc{color:var(--text-muted);font-size:1.1rem;line-height:1.6;margin-top:14px;max-width:640px;}
+  .report .course{color:var(--text-muted);font-size:1rem;margin-top:18px;}
+  .report .arrow{font-size:1.4rem;flex:0 0 auto;margin-top:6px;}
+
+  footer{background:var(--bg-dark);color:#888;text-align:center;padding:40px;font-size:.9rem;}
+
+  @media(max-width:900px){
+    nav{padding:18px 24px;}.nav-links{gap:20px;}
+    .hero-content h1{font-size:3rem;}
+    .hero-moon{width:180px;height:180px;top:5%;right:6%;}
+    .block-title{font-size:2.3rem;}
+    .storymap-body{flex-direction:column;}
+    .report{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="brand"><span class="dot"></span>Jed Moore</a>
+  <div class="nav-links">
+    <a href="index.html#about">About</a>
+    <a href="index.html#works">Works</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <img class="hero-moon" src="https://placehold.co/320x320/1a1a1a/888?text=Moon" alt="Moon">
+  <div class="hero-content">
+    <h1>Class Projects</h1>
+    <p>As a GIST student at Texas A&amp;M, I've taken courses such as Remote Sensing, Global Navigation Satellite Systems, Digital Image Processing, Cartography &amp; Visualization, Geodatabases, and more!</p>
+    <hr class="divider">
+    <p class="closer">Below are some of my favorite class works.</p>
+  </div>
+</header>
+
+<!-- ===== STORYMAPS ===== -->
+<section class="block">
+  <h2 class="block-title">StoryMaps</h2>
+
+  <a href="[ADD StoryMap link]" class="storymap" target="_blank" rel="noopener">
+    <img class="storymap-img" src="https://placehold.co/1200x230/555/fff?text=Lunar+Colony" alt="Lunar Colony StoryMap">
+    <div class="storymap-body">
+      <div>
+        <h3>Lunar Colony Site Suitability StoryMap</h3>
+        <p class="desc">This StoryMap uses several layouts, data visualizations, and a Dashboard to provide context as to why regions around the moon's southern pole are increasingly important to our nation's success in space.</p>
+      </div>
+      <span class="arrow">&#8599;</span>
+    </div>
+    <div class="storymap-caption">Humanity's Next Home</div>
+  </a>
+
+  <a href="[ADD StoryMap link]" class="storymap" target="_blank" rel="noopener">
+    <img class="storymap-img" src="https://placehold.co/1200x230/3a5a7a/fff?text=Urban+Transportation" alt="Urban Transportation StoryMap">
+    <div class="storymap-body">
+      <div>
+        <h3>Urban Transportation Efficiency StoryMap</h3>
+        <p class="desc">This StoryMap features Dashboards visualizing the difference in transportation efficiency between bike-able Amsterdam and Houston's infamous traffic.</p>
+      </div>
+      <span class="arrow">&#8599;</span>
+    </div>
+    <div class="storymap-caption">Comparing Transportation Efficiencies: Amsterdam vs. Houston</div>
+  </a>
+
+  <a href="[ADD StoryMap link]" class="storymap" target="_blank" rel="noopener">
+    <img class="storymap-img" src="https://placehold.co/1200x230/6a5a7a/fff?text=NY+Blizzard" alt="New York Blizzard StoryMap">
+    <div class="storymap-body">
+      <div>
+        <h3>New York Blizzard Traffic StoryMap</h3>
+        <p class="desc">This StoryMap used a Dashboard and a Calendar Heat Chart to visualize taxi traffic before and after the 2016 blizzard.</p>
+      </div>
+      <span class="arrow">&#8599;</span>
+    </div>
+    <div class="storymap-caption">New York Taxis in the 2016 Blizzard</div>
+  </a>
+</section>
+
+<!-- ===== LAYOUT GALLERY ===== -->
+<section class="block">
+  <h2 class="block-title">Layout Gallery</h2>
+  <div class="gallery">
+    <img src="https://placehold.co/600x450/8a9a6e/fff?text=Valles+Caldera" alt="Valles Caldera National Preserve">
+    <img src="https://placehold.co/600x450/2a5d8a/fff?text=Crater+Lake" alt="Crater Lake Topography">
+    <img src="https://placehold.co/600x450/8a2a2a/fff?text=Housing+Affordability" alt="Housing Affordability">
+    <img src="https://placehold.co/600x450/5a6e7a/fff?text=SC+Highways" alt="South Carolina Highways">
+    <img src="https://placehold.co/600x450/333/fff?text=Hurricane+Tracks" alt="Hurricane Tracks 1950-2023">
+    <img src="https://placehold.co/600x450/444/fff?text=Population+Growth" alt="Population Growth">
+  </div>
+</section>
+
+<!-- ===== LAB REPORTS ===== -->
+<section class="block">
+  <h2 class="block-title">Lab Reports</h2>
+
+  <a href="[ADD report link]" class="report" target="_blank" rel="noopener">
+    <div>
+      <h3>ISODATA Unsupervised Image Classification</h3>
+      <p class="desc">Testing ISODATA parameters to improve unsupervised land-cover classification and comparing the results to NLCD.</p>
+      <div class="course">GEOG 461: Digital Image Processing</div>
+    </div>
+    <span class="arrow">&#8599;</span>
+  </a>
+
+  <a href="[ADD report link]" class="report" target="_blank" rel="noopener">
+    <div>
+      <h3>Preparing Multispectral Images for Analysis</h3>
+      <p class="desc">Georeferencing imagery and converting DN values to radiance/reflectance to analyze vegetation using NDVI.</p>
+      <div class="course">GEOG 361: Remote Sensing</div>
+    </div>
+    <span class="arrow">&#8599;</span>
+  </a>
+
+  <a href="[AD
