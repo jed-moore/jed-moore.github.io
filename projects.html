@@ -17,7 +17,6 @@
   html{scroll-behavior:smooth;}
   body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg-light);color:var(--text-dark);}
   a{text-decoration:none;color:inherit;}
-
   /* ---------- NAVBAR ---------- */
   nav{position:fixed;top:0;left:0;width:100%;display:flex;align-items:center;justify-content:space-between;
     padding:28px 48px;background:var(--bg-easy-black);color:#fff;z-index:100;}
@@ -26,19 +25,16 @@
   .nav-links{display:flex;gap:34px;font-weight:600;}
   .nav-links a{transition:opacity .2s;}
   .nav-links a:hover{opacity:.6;}
-
   /* ---------- HERO ---------- */
-  .hero{min-height:80vh;background:url('moonbg.jpg') center/cover no-repeat;color:#fff;position:relative;overflow:hidden;display:flex;align-items:center;}
+  .hero{min-height:80vh;background:var(--bg-dark) url('moonbg.png') center/cover no-repeat;color:#fff;position:relative;overflow:hidden;display:flex;align-items:center;}
   .hero-content{position:relative;z-index:2;max-width:760px;padding:0 9%;}
   .hero-content h1{font-size:4.6rem;font-weight:800;letter-spacing:-2px;}
   .hero-content p{font-size:1.35rem;color:#cfcfcf;line-height:1.6;margin-top:24px;max-width:620px;}
   .hero-content .divider{border:none;border-top:1px solid #3a3a3a;margin:28px 0;max-width:620px;}
   .hero-content .closer{font-size:1.35rem;color:#fff;}
-
   /* ---------- GENERIC SECTION ---------- */
   .block{max-width:1100px;margin:0 auto;padding:110px 40px;}
   .block-title{font-size:3.2rem;font-weight:800;letter-spacing:-1px;margin-bottom:50px;}
-
   /* ---------- STORYMAPS ---------- */
   .storymap{display:block;margin-bottom:90px;transition:transform .3s ease;}
   .storymap:hover{transform:scale(1.03);}
@@ -48,13 +44,11 @@
   .storymap-body .desc{color:var(--text-muted);font-size:1.1rem;line-height:1.6;margin-top:14px;max-width:640px;}
   .storymap-body .arrow{font-size:1.4rem;flex:0 0 auto;margin-top:6px;}
   .storymap-caption{color:var(--text-muted);font-size:1rem;margin-top:20px;padding-bottom:18px;border-bottom:1px solid #ccc;}
-
   /* ---------- LAYOUT GALLERY ---------- */
   .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:28px;align-items:start;}
   .gallery img{width:100%;display:block;border-radius:8px;border:1px solid #e2e2e2;background:#fff;cursor:zoom-in;
     transition:transform .3s ease, box-shadow .3s ease;}
   .gallery img:hover{transform:scale(1.04);box-shadow:0 14px 40px rgba(0,0,0,.15);}
-
   /* ---------- LAB REPORTS ---------- */
   .report{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;
     padding:30px 0 24px;border-bottom:1px solid #ccc;margin-bottom:50px;
@@ -64,7 +58,6 @@
   .report .desc{color:var(--text-muted);font-size:1.1rem;line-height:1.6;margin-top:14px;max-width:640px;}
   .report .course{color:var(--text-muted);font-size:1rem;margin-top:18px;}
   .report .arrow{font-size:1.4rem;flex:0 0 auto;margin-top:6px;}
-
   /* ---------- LIGHTBOX ---------- */
   .lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.9);
     align-items:center;justify-content:center;padding:40px;cursor:zoom-out;}
@@ -72,13 +65,10 @@
   .lightbox img{max-width:92%;max-height:92%;object-fit:contain;border-radius:6px;
     box-shadow:0 20px 70px rgba(0,0,0,.6);}
   .lightbox .close{position:absolute;top:24px;right:34px;font-size:2.4rem;color:#fff;cursor:pointer;line-height:1;}
-
   footer{background:var(--bg-dark);color:#888;text-align:center;padding:40px;font-size:.9rem;}
-
   @media(max-width:900px){
     nav{padding:18px 24px;}.nav-links{gap:20px;}
     .hero-content h1{font-size:3rem;}
-    .hero-moon{width:180px;height:180px;top:5%;right:6%;}
     .block-title{font-size:2.3rem;}
     .gallery{grid-template-columns:1fr;}
     .storymap-body{flex-direction:column;}
@@ -87,7 +77,6 @@
 </style>
 </head>
 <body>
-
 <nav>
   <a href="index.html" class="brand"><span class="dot"></span>Jed Moore</a>
   <div class="nav-links">
@@ -96,10 +85,8 @@
     <a href="index.html#contact">Contact</a>
   </div>
 </nav>
-
 <!-- ===== HERO ===== -->
 <header class="hero">
-  <img class="hero-moon" src="https://placehold.co/320x320/1a1a1a/888?text=Moon" alt="Moon">
   <div class="hero-content">
     <h1>Class Projects</h1>
     <p>As a GIST student at Texas A&amp;M, I've taken courses such as Remote Sensing, Global Navigation Satellite Systems, Digital Image Processing, Cartography &amp; Visualization, Geodatabases, and more!</p>
@@ -107,11 +94,9 @@
     <p class="closer">Below are some of my favorite class works.</p>
   </div>
 </header>
-
 <!-- ===== STORYMAPS ===== -->
 <section class="block">
   <h2 class="block-title">StoryMaps</h2>
-
   <a href="https://storymaps.arcgis.com/stories/f87dc038bf6542a7affa5f122c4c773b" class="storymap" target="_blank" rel="noopener">
     <img class="storymap-img" src="lunar-thumbnail.png" alt="Lunar Colony StoryMap">
     <div class="storymap-body">
@@ -123,7 +108,6 @@
     </div>
     <div class="storymap-caption">Humanity's Next Home</div>
   </a>
-
   <a href="https://storymaps.arcgis.com/stories/31d2d9e6fdf14d29bce17c94cf6c7196" class="storymap" target="_blank" rel="noopener">
     <img class="storymap-img" src="amsterdam-thumbnail.png" alt="Urban Transportation StoryMap">
     <div class="storymap-body">
@@ -135,7 +119,6 @@
     </div>
     <div class="storymap-caption">Comparing Transportation Efficiencies: Amsterdam vs. Houston</div>
   </a>
-
   <a href="https://storymaps.arcgis.com/stories/944d12ee458b4f2b896cbd9b63cdcfb6" class="storymap" target="_blank" rel="noopener">
     <img class="storymap-img" src="ny-thumbnail.png" alt="New York Blizzard StoryMap">
     <div class="storymap-body">
@@ -148,7 +131,6 @@
     <div class="storymap-caption">New York Taxis in the 2016 Blizzard</div>
   </a>
 </section>
-
 <!-- ===== LAYOUT GALLERY ===== -->
 <section class="block">
   <h2 class="block-title">Layout Gallery</h2>
@@ -161,11 +143,9 @@
     <img src="population-growth.png" alt="Population Growth">
   </div>
 </section>
-
 <!-- ===== LAB REPORTS ===== -->
 <section class="block">
   <h2 class="block-title">Lab Reports</h2>
-
   <a href="[ADD report link]" class="report" target="_blank" rel="noopener">
     <div>
       <h3>ISODATA Unsupervised Image Classification</h3>
@@ -174,7 +154,6 @@
     </div>
     <span class="arrow">&#8599;</span>
   </a>
-
   <a href="[ADD report link]" class="report" target="_blank" rel="noopener">
     <div>
       <h3>Preparing Multispectral Images for Analysis</h3>
@@ -183,7 +162,6 @@
     </div>
     <span class="arrow">&#8599;</span>
   </a>
-
   <a href="[ADD report link]" class="report" target="_blank" rel="noopener">
     <div>
       <h3>Endmember-based Analysis for Oil-Spill Detection in Coastal Wetland</h3>
@@ -193,19 +171,15 @@
     <span class="arrow">&#8599;</span>
   </a>
 </section>
-
 <!-- lightbox overlay -->
 <div class="lightbox" id="lightbox">
   <span class="close" id="lightbox-close">&times;</span>
   <img id="lightbox-img" src="" alt="">
 </div>
-
 <footer>&copy; 2026 Jed Moore &middot; Built with HTML</footer>
-
 <script>
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
-
   // open when any gallery image is clicked
   document.querySelectorAll('.gallery img').forEach(img => {
     img.addEventListener('click', () => {
@@ -214,7 +188,6 @@
       lightbox.classList.add('open');
     });
   });
-
   // close on background click, the × button, or the Esc key
   function closeLightbox(){ lightbox.classList.remove('open'); }
   lightbox.addEventListener('click', e => {
@@ -223,6 +196,5 @@
   document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 </script>
-
 </body>
 </html>
